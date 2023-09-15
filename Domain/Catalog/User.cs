@@ -4,7 +4,7 @@ namespace Domain.Catalog;
 
 public class User : IAggregateRoot
 {
-    public User(string firstName, string lastName, string email, string password, Role role)
+    public User(string firstName, string lastName, string email, string password, string role)
     {
         FirstName = firstName;
         LastName = lastName;
@@ -19,9 +19,11 @@ public class User : IAggregateRoot
 
     public string LastName { get; set; }
 
+    public string FullName { get; set; }
+
     public string Email { get; set; }
 
     public string Password { get; set; }
-    
-    public Role Role { get; set; }
+
+    public string Role { get; set; }
 }

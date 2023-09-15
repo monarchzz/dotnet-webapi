@@ -1,7 +1,10 @@
 namespace Shared.Authorization;
 
-public enum Role
+public static class Role
 {
-    Admin,
-    Basic,
+    public const string Admin = nameof(Admin);
+    public const string Basic = nameof(Basic);
+
+
+    public static string PermissionFor(string permission) => $"${AppClaims.Permission}.{permission}";
 }

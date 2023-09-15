@@ -1,0 +1,6 @@
+{
+  "LoggerSettings": {
+    "AppName": "WebApi",
+    "StructuredConsoleLogging": false
+  }
+}

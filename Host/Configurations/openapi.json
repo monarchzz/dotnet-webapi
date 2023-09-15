@@ -1,0 +1,11 @@
+{
+  "SwaggerSettings": {
+    "Enable": true,
+    "Title": ".NET 7 WebAPI",
+    "Version": "1.0.0",
+    "Description": "Clean Architecture Template for .NET 7 WebApi",
+    "ContactName": "Demo",
+    "ContactEmail": "Deno@gmail.com",
+    "ContactUrl": "https://google.com"
+  }
+}
