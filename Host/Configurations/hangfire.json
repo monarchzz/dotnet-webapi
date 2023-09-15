@@ -20,7 +20,7 @@
       "WorkerCount": 5
     },
     "Storage": {
-      "ConnectionString": "Host=localhost;Port=5432;Database=webapi;Username=postgres;Password=admin;Include Error Detail=true",
+      "ConnectionString": "Host=localhost;Port=5432;Database=webapi;Username=postgres;Password=z2rC8PK@BafZ9yR5;Include Error Detail=true",
       "Options": {
         "CommandBatchMaxTimeout": "00:05:00",
         "QueuePollInterval": "00:00:01",

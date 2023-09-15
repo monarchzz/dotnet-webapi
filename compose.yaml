@@ -1,0 +1,43 @@
+version: '3.8'
+name: webapi
+
+services:
+  webapi:
+    container_name: webapi
+    build:
+      context: .
+      dockerfile: Host/Dockerfile
+    environment:
+      - ASPNETCORE_ENVIRONMENT=docker
+      - ASPNETCORE_URLS=http://+:5010
+      - DatabaseSettings__ConnectionString=Server=postgres;Port=5433;Database=webapi;User Id=postgres;Password=z2rC8PK@BafZ9yR5
+      - HangfireSettings__Storage__ConnectionString=Server=postgres;Port=5433;Database=webapi;User Id=postgres;Password=z2rC8PK@BafZ9yR5
+    networks:
+      - webapi-network
+    ports:
+      - 5010:5010
+    depends_on:
+      - postgres
+    restart: on-failure
+
+  postgres:
+    container_name: postgres
+    image: postgres:latest
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=z2rC8PK@BafZ9yR5
+      - PGPORT=5433
+    ports:
+      - 5433:5433
+    restart: always
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+    networks:
+      - webapi-network
+
+networks:
+  webapi-network:
+    name: webapi-network
+
+volumes:
+  postgres-data:

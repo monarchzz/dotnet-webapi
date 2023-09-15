@@ -1,5 +1,5 @@
 {
   "DatabaseSettings": {
-    "ConnectionString": "Host=localhost;Port=5432;Database=webapi;Username=postgres;Password=admin;Include Error Detail=true"
+    "ConnectionString": "Host=localhost;Port=5432;Database=webapi;Username=postgres;Password=z2rC8PK@BafZ9yR5;Include Error Detail=true"
   }
 }

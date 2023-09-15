@@ -33,6 +33,11 @@ internal class ApplicationDbSeeder
 
     private async Task SeedAdminUserAsync(ApplicationDbContext dbContext, CancellationToken cancellationToken)
     {
+        if (await dbContext.Users.AnyAsync(cancellationToken))
+        {
+            return;
+        }
+
         var adminUser = new User(
             firstName: "Admin",
             lastName: "User",
