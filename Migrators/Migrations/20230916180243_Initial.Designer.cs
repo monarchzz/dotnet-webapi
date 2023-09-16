@@ -12,7 +12,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace Migrators.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20230915190917_Initial")]
+    [Migration("20230916180243_Initial")]
     partial class Initial
     {
         /// <inheritdoc />
@@ -108,6 +108,9 @@ namespace Migrators.Migrations
                         .HasColumnType("character varying(256)");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("Email")
+                        .IsUnique();
 
                     b.ToTable("Users", "catalog");
                 });

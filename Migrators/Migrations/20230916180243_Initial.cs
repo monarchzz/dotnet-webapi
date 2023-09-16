@@ -73,6 +73,13 @@ namespace Migrators.Migrations
                 schema: "catalog",
                 table: "Products",
                 column: "BrandId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Users_Email",
+                schema: "catalog",
+                table: "Users",
+                column: "Email",
+                unique: true);
         }
 
         /// <inheritdoc />
