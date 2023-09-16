@@ -28,7 +28,7 @@ public class ConfigureJwtBearerOptions : IConfigureNamedOptions<JwtBearerOptions
             return;
         }
 
-        byte[] key = Encoding.ASCII.GetBytes(_jwtSettings.Key);
+        byte[] key = Encoding.UTF8.GetBytes(_jwtSettings.Key);
 
         options.RequireHttpsMetadata = false;
         options.SaveToken = true;
@@ -39,7 +39,6 @@ public class ConfigureJwtBearerOptions : IConfigureNamedOptions<JwtBearerOptions
             ValidateIssuer = false,
             ValidateLifetime = true,
             ValidateAudience = false,
-            RoleClaimType = ClaimTypes.Role,
             ClockSkew = TimeSpan.Zero
         };
         options.Events = new JwtBearerEvents

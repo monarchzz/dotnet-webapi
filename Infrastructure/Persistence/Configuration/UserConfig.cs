@@ -8,6 +8,9 @@ public class UserConfig : IEntityTypeConfiguration<User>
 {
     public void Configure(EntityTypeBuilder<User> builder)
     {
+        builder.HasKey(b => b.Id);
+        builder.HasIndex(b => b.Email).IsUnique();
+
         builder.Property(b => b.FirstName)
             .HasMaxLength(256);
         builder.Property(b => b.LastName)

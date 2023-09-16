@@ -1,3 +1,8 @@
 namespace Application.Identity.Tokens;
 
-public record TokenResponse(string Token, string RefreshToken, DateTime RefreshTokenExpiryTime);
+public record TokenResponse(
+    Guid UserId,
+    string Role,
+    string Token,
+    string RefreshToken
+);

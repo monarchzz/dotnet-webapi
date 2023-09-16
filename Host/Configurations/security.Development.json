@@ -3,9 +3,9 @@
     "Provider": "Jwt",
     "RequireConfirmedAccount": true,
     "JwtSettings": {
-      "key": "ejY516S6W2EEPqiPe6UUddsAZVRm04KC",
-      "RefreshKey": "aiaGC2GjQshB9i8VqEOpgCjxHUk4bGXz",
-      "tokenExpirationInMinutes": 60,
+      "key": "KByc5KfU0JKV7HvqZZaIwlkrEcICGyvp",
+      "RefreshKey": "6KtoBxIYwjr1lUh6GoGudnmh0pFKfm9P",
+      "tokenExpirationInMinutes": 1440,
       "refreshTokenExpirationInDays": 7
     },
     "Swagger": {

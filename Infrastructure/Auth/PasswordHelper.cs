@@ -5,6 +5,10 @@ namespace Infrastructure.Auth;
 
 public class PasswordHelper : IPasswordHelper
 {
+    public PasswordHelper()
+    {
+    }
+
     public string HashPassword(string password)
     {
         return BC.HashPassword(password);

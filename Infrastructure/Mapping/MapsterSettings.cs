@@ -1,4 +1,6 @@
-﻿namespace Infrastructure.Mapping;
+﻿using Mapster;
+
+namespace Infrastructure.Mapping;
 
 public class MapsterSettings
 {
@@ -9,5 +11,7 @@ public class MapsterSettings
 
         // This one is actually not necessary as it's mapped by convention
         // TypeAdapterConfig<Product, ProductDto>.NewConfig().Map(dest => dest.BrandName, src => src.Brand.Name);
+
+        TypeAdapterConfig.GlobalSettings.Default.IgnoreNullValues(true);
     }
 }

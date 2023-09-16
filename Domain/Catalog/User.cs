@@ -19,7 +19,7 @@ public class User : IAggregateRoot
 
     public string LastName { get; set; }
 
-    public string FullName { get; set; }
+    public string FullName { get; set; } = default!;
 
     public string Email { get; set; }
 
