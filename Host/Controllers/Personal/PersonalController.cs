@@ -1,5 +1,5 @@
-using Application.Identity.Users;
-using Application.Identity.Users.Password;
+using Application.Catalog.Users;
+using Application.Personal;
 using NSwag.Annotations;
 
 namespace Host.Controllers.Personal;

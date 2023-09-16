@@ -1,7 +1,8 @@
+using Application.Catalog.Users;
 using Application.Common.Auth;
 using Mapster;
 
-namespace Application.Identity.Users.Password;
+namespace Application.Personal;
 
 public class ChangePasswordRequest : IRequest<UserDto>
 {

@@ -1,14 +1,13 @@
 using Application.Common.Auth;
+using Shared.Authorization;
 
-namespace Application.Identity.Users;
+namespace Application.Catalog.Users;
 
 public class CreateUserRequest : IRequest<BaseDto>
 {
     public string FirstName { get; set; } = default!;
 
     public string LastName { get; set; } = default!;
-
-    public string FullName { get; set; } = default!;
 
     public string Email { get; set; } = default!;
 
@@ -26,9 +25,6 @@ public class CreateUserRequestValidator : AbstractValidator<CreateUserRequest>
             .NotEmpty();
         RuleFor(v => v.LastName)
             .MaximumLength(200)
-            .NotEmpty();
-        RuleFor(v => v.FullName)
-            .MaximumLength(400)
             .NotEmpty();
         RuleFor(v => v.Email)
             .MaximumLength(200)
@@ -57,6 +53,12 @@ public class CreateUserRequestHandler : IRequestHandler<CreateUserRequest, BaseD
 
     public async Task<BaseDto> Handle(CreateUserRequest request, CancellationToken cancellationToken)
     {
+        var roleValid = Role.IsValid(request.Role);
+        if (!roleValid) throw new BadRequestException("Role is not valid.");
+
+        var userExists = await _userRepository.AnyAsync(new UserByEmailSpec(request.Email), cancellationToken);
+        if (userExists) throw new BadRequestException("Email already exists.");
+
         var user = new User(request.FirstName, request.LastName, request.Email, request.Password, request.Role)
         {
             Password = _passwordHelper.HashPassword(request.Password)

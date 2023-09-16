@@ -1,4 +1,4 @@
-namespace Application.Identity.Tokens;
+namespace Application.Auth;
 
 public record TokenResponse(
     Guid UserId,

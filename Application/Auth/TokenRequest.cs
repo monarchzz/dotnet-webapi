@@ -1,8 +1,7 @@
 using Application.Catalog.Users;
 using Application.Common.Auth;
-using Application.Identity.Users;
 
-namespace Application.Identity.Tokens;
+namespace Application.Auth;
 
 public record TokenRequest(string Email, string Password) : IRequest<TokenResponse>;
 

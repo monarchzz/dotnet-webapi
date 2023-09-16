@@ -1,5 +1,5 @@
+using Application.Catalog.Users;
 using Application.Common.Exceptions;
-using Application.Identity.Users;
 using NSwag.Annotations;
 
 namespace Host.Controllers.Catalog;
@@ -8,6 +8,7 @@ public class UsersController : VersionedApiController
 {
     [HttpPost]
     [OpenApiOperation("Create a new user.", "")]
+    [MustHavePermission(Role.Admin)]
     public Task<BaseDto> CreateAsync(CreateUserRequest request, CancellationToken cancellationToken)
     {
         return Mediator.Send(request, cancellationToken);
@@ -15,6 +16,7 @@ public class UsersController : VersionedApiController
 
     [HttpPut("{id:guid}")]
     [OpenApiOperation("Update an existing user.", "")]
+    [MustHavePermission(Role.Admin)]
     public Task<UserDto> UpdateAsync(Guid id, UpdateUserRequest request, CancellationToken cancellationToken)
     {
         return id != request.Id
@@ -27,5 +29,15 @@ public class UsersController : VersionedApiController
     public Task<BaseDto> DeleteAsync(Guid id, CancellationToken cancellationToken)
     {
         return Mediator.Send(new DeleteUserRequest(id), cancellationToken);
+    }
+
+    [HttpPost("search")]
+    [OpenApiOperation("Search users using available filters.", "")]
+    public Task<PaginationResponse<UserDto>> SearchAsync(
+        SearchUsersRequest request,
+        CancellationToken cancellationToken
+    )
+    {
+        return Mediator.Send(request, cancellationToken);
     }
 }

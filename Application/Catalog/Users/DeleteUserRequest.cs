@@ -1,4 +1,4 @@
-namespace Application.Identity.Users;
+namespace Application.Catalog.Users;
 
 public class DeleteUserRequest : IRequest<BaseDto>
 {

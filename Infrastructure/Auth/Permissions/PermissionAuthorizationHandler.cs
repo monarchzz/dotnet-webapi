@@ -15,12 +15,24 @@ internal class PermissionAuthorizationHandler : AuthorizationHandler<PermissionR
         _repository = repository;
     }
 
-    protected override async Task HandleRequirementAsync(AuthorizationHandlerContext context,
-        PermissionRequirement requirement)
+    protected override async Task HandleRequirementAsync(
+        AuthorizationHandlerContext context,
+        PermissionRequirement requirement
+    )
     {
-        if (context.User?.GetUserId() is { } userId &&
-            await _repository.AnyAsync(new UserByIdSpec(userId))
-           )
+        var requirementArray = requirement.Permission.Split(".");
+        if (requirementArray.Length < 2)
+            return;
+
+        var permissions = requirementArray[1].Split(",");
+
+        var userId = context.User?.GetUserId();
+        if (userId is null)
+            return;
+        var user = await _repository.GetByIdAsync(Guid.Parse(userId));
+        if (user is null)
+            return;
+        if (permissions.Any(p => string.Equals(p, user.Role)))
         {
             context.Succeed(requirement);
         }

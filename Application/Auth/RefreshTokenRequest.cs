@@ -1,7 +1,6 @@
-using Application.Catalog.Users;
 using Application.Common.Auth;
 
-namespace Application.Identity.Tokens;
+namespace Application.Auth;
 
 public record RefreshTokenRequest(string RefreshToken) : IRequest<TokenResponse>;
 

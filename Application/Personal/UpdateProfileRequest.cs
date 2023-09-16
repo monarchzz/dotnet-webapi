@@ -1,6 +1,7 @@
+using Application.Catalog.Users;
 using Mapster;
 
-namespace Application.Identity.Users;
+namespace Application.Personal;
 
 public class UpdateProfileRequest : IRequest<UserDto>
 {
